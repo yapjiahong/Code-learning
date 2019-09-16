@@ -49,11 +49,20 @@ object scala_function_method {
   }
 
   val f: Int => Int = (x: Int) =>  x + 3//val f = (x: Int) =>  x + 3
+  val max = (m: Int, n: Int) => if(m > n) m else n //val max2:(Int,Int) => Int = (m: Int, n: Int) => if(m > n) m else n
   val f1:(Int) => Int = (x:Int) => x+3
   def m2 = 100
 
   def m3() = 1000
   var f2: () => Int = () => 100 //var f2 =() => 100
+
+  val function_3 = { (x:Int,y:Int) =>
+     x % y
+  }
+  //function_3`s functionality same as function_4
+  val function_4: (Int, Int) => Int = { (x:Int, y:Int) =>
+    x % y
+  }
 
   def main(args:Array[String]): Unit =
   {
@@ -89,6 +98,9 @@ object scala_function_method {
     def m4(x:Int): Int = x * x * x
     val f3 = m4 _ // m4(method) transform to function
     println(f3(3))
+
+    println("function_3(9,3)> "+function_3(4+5,2+1)) //0
+    println("function_4(9,3)> "+function_4(4+5,2+1)) // 0
     //println(m4(3))
 
     /* Expectation Result

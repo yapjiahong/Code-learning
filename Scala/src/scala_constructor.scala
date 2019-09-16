@@ -1,6 +1,16 @@
 object scala_constructor {
 
   def main(args: Array[String]): Unit = {
+    /*
+    Learning References from
+    对于var修饰的参数：外部可读/可改写 （实际上是：编译器为该类参数（字段）自动生成了getter和setter）
+    对于val修饰的参数：外部可读/不可改写（实际上是：编译器为该类参数（字段）只生成了getter没有生成setter）
+    对于private var修饰的参数：内部可读/可改写 （编译器不会为私有类参数（字段）自动生成getter和setter）
+    对于private val修饰的参数：内部可读/不可改写 （编译器不会为该类参数（字段）自动生成getter和setter）
+    ————————————————
+    版权声明：本文为CSDN博主「bluishglc」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+    原文链接：https://blog.csdn.net/bluishglc/article/details/50899077
+    */
 
     val t1 = new Test1
     println(t1.getx+"\t"+t1.gety)
@@ -59,6 +69,18 @@ object scala_constructor {
     point1.x = 1
     println(point1.description)
     */
+
+    /*
+    println("Testing private")
+    println("val t7 = new Test6")
+    val t7 = new Test4
+    println(t7.description)
+    */
+
+    println("Testing private")
+    println("val t8 = new Test4_1")
+    val t8 = new Test4_1
+    println(t8.description)
   }
 
   class Test1 {
@@ -125,7 +147,8 @@ object scala_constructor {
   }
 
   class Test3
-  { println("Top of the method")
+  {
+    println("Top of the method")
 
     private var _ax = 0
     private var _ay = 0
@@ -144,23 +167,23 @@ object scala_constructor {
     println("Bottom the method")
   }
 
-/*
-  class Test4 private( var x:Int=0, var y:Int=0)
+
+  class Test4 private( var x:Int=0, var y:Int=0) //private修饰后，主构造器将不能被调用
   {
     println("Top of the method")
     println("Insisde the method")
     def description = "X> "+x+"\ty> "+y //def description2:String = "X> "+x+"\ty> "+y
     println("Bottom the method")
-
-    //Getter
-    def getx = x
-    def gety = y
-
-    // Setter
-    def x_= (newValue:Int): Unit = x = newValue
-    def y_= (newValue:Int): Unit = y = newValue
   }
-*/
+
+  class Test4_1 (private var x:Int=0,private var y:Int=0)
+  {
+    println("Top of the method")
+    println("Insisde the method")
+    def description = "X> "+x+"\ty> "+y //def description2:String = "X> "+x+"\ty> "+y
+    println("Bottom the method")
+  }
+
 class Point {
   private var _x = 0
   private var _y = 0

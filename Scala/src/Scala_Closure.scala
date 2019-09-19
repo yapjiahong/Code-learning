@@ -1,3 +1,5 @@
+
+import scala.math.pow
 object Scala_Closure {
 
   def some(): (Int => Int)=
@@ -24,6 +26,7 @@ object Scala_Closure {
   //def doSome(x: Int) = (a: Int) => x + a
   def doSome(x:Int): Int => Int = { (a:Int) => x+a }
 
+  def sumOfCubes(a: Double, b: Double, c: Double): Double = pow(a, 3)+pow(b, 3)+pow(c, 3)
   def main(args:Array[String]): Unit =
   {
     val test = some()
@@ -42,5 +45,13 @@ object Scala_Closure {
     val foo4 = doSome(3)
     println(foo3(6))
     println(foo3(9))
+
+    println("sumOfCubes> "+sumOfCubes(1,2,3))
+    val sumofCubes2 = sumOfCubes(_:Double,3,_:Double)
+    println(sumofCubes2(4,5)) //216
+    println(sumofCubes2.apply(4,5)) //216
+    val s = sumOfCubes _
+    println(s.apply(4,3,5))
+
   }
 }

@@ -4,6 +4,9 @@ import sys
 inFile = open(sys.argv[1],'r') # read file
 outFile = open(sys.argv[2],'w') # wrtie file
 
+t1 = [] # tupple1
+d1 = {} #dictionary
+
 lines = inFile.readlines() # read multi lines
 # line = inFile.readline() # read one line / first line
 
